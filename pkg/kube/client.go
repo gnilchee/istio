@@ -824,6 +824,7 @@ func (c *client) deleteFile(namespace string, dryRun bool, file string) error {
 	}
 	opts := kubectlDelete.DeleteOptions{
 		FilenameOptions:  fileOpts,
+		CascadingStrategy: metav1.DeletePropagationBackground,
 		GracePeriod:      -1,
 		IgnoreNotFound:   true,
 		WaitForDeletion:  true,

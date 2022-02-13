@@ -22,13 +22,13 @@ import (
 	"time"
 
 	coreV1 "k8s.io/api/core/v1"
-	"k8s.io/api/networking/v1beta1"
+	"k8s.io/api/networking/v1"
 	metaV1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/kubernetes"
 	listerv1 "k8s.io/client-go/listers/core/v1"
-	listerv1beta1 "k8s.io/client-go/listers/networking/v1beta1"
+	ingresslister "k8s.io/client-go/listers/networking/v1"
 
 	meshconfig "istio.io/api/mesh/v1alpha1"
 
@@ -54,7 +54,7 @@ type StatusSyncer struct {
 	ingressService string
 
 	queue         queue2.Instance
-	ingressLister listerv1beta1.IngressLister
+	ingressLister ingresslister.IngressLister
 	podLister     listerv1.PodLister
 	serviceLister listerv1.ServiceLister
 	nodeLister    listerv1.NodeLister
@@ -79,7 +79,7 @@ func NewStatusSyncer(mesh *meshconfig.MeshConfig, client kubelib.Client) (*Statu
 
 	st := StatusSyncer{
 		client:              client,
-		ingressLister:       client.KubeInformer().Networking().V1beta1().Ingresses().Lister(),
+		ingressLister:       client.KubeInformer().Networking().V1().Ingresses().Lister(),
 		podLister:           client.KubeInformer().Core().V1().Pods().Lister(),
 		serviceLister:       client.KubeInformer().Core().V1().Services().Lister(),
 		nodeLister:          client.KubeInformer().Core().V1().Nodes().Lister(),
@@ -147,7 +147,7 @@ func (s *StatusSyncer) updateStatus(status []coreV1.LoadBalancerIngress) error {
 
 		currIng.Status.LoadBalancer.Ingress = status
 
-		_, err := s.client.NetworkingV1beta1().Ingresses(currIng.Namespace).UpdateStatus(context.TODO(), currIng, metaV1.UpdateOptions{})
+		_, err := s.client.NetworkingV1().Ingresses(currIng.Namespace).UpdateStatus(context.TODO(), currIng, metaV1.UpdateOptions{})
 		if err != nil {
 			log.Warnf("error updating ingress status: %v", err)
 		}
@@ -285,7 +285,7 @@ func convertIngressControllerMode(mode meshconfig.MeshConfig_IngressControllerMo
 // classIsValid returns true if the given Ingress either doesn't specify
 // the ingress.class annotation, or it's set to the configured in the
 // ingress controller.
-func classIsValid(ing *v1beta1.Ingress, controller, defClass string) bool {
+func classIsValid(ing *v1.Ingress, controller, defClass string) bool {
 	// ingress fetched through annotation.
 	var ingress string
 	if ing != nil && len(ing.GetAnnotations()) != 0 {

@@ -24,11 +24,11 @@ import (
 	"time"
 
 	kerrors "k8s.io/apimachinery/pkg/api/errors"
-	"k8s.io/client-go/informers/networking/v1beta1"
+	"k8s.io/client-go/informers/networking/v1"
 
 	"istio.io/pkg/ledger"
 
-	ingress "k8s.io/api/networking/v1beta1"
+	ingress "k8s.io/api/networking/v1"
 	"k8s.io/client-go/kubernetes"
 	listerv1 "k8s.io/client-go/listers/core/v1"
 	"k8s.io/client-go/tools/cache"
@@ -93,7 +93,7 @@ type controller struct {
 	serviceInformer cache.SharedInformer
 	serviceLister   listerv1.ServiceLister
 	// May be nil if ingress class is not supported in the cluster
-	classes v1beta1.IngressClassInformer
+	classes v1.IngressClassInformer
 }
 
 var (
@@ -129,14 +129,14 @@ func NewController(client kube.Client, meshWatcher mesh.Holder,
 		ingressNamespace = constants.IstioIngressNamespace
 	}
 
-	ingressInformer := client.KubeInformer().Networking().V1beta1().Ingresses().Informer()
+	ingressInformer := client.KubeInformer().Networking().V1().Ingresses().Informer()
 	log.Infof("Ingress controller watching namespaces %q", options.WatchedNamespaces)
 
 	serviceInformer := client.KubeInformer().Core().V1().Services()
 
-	var classes v1beta1.IngressClassInformer
+	var classes v1.IngressClassInformer
 	if ingressClassSupported(client) {
-		classes = client.KubeInformer().Networking().V1beta1().IngressClasses()
+		classes = client.KubeInformer().Networking().V1().IngressClasses()
 		// Register the informer now, so it will be properly started
 		_ = classes.Informer()
 	} else {

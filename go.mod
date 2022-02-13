@@ -24,14 +24,12 @@ replace github.com/Microsoft/hcsshim => github.com/Microsoft/hcsshim v0.8.8-0.20
 replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.5
 
 require (
-	cloud.google.com/go v0.50.0
+	cloud.google.com/go v0.54.0
 	cloud.google.com/go/logging v1.0.0
 	contrib.go.opencensus.io/exporter/prometheus v0.2.0
 	contrib.go.opencensus.io/exporter/stackdriver v0.12.9
 	contrib.go.opencensus.io/exporter/zipkin v0.1.1
 	fortio.org/fortio v1.4.1
-	github.com/Azure/go-autorest/autorest v0.9.4 // indirect
-	github.com/Azure/go-autorest/autorest/adal v0.8.3 // indirect
 	github.com/DataDog/datadog-go v2.2.0+incompatible
 	github.com/Masterminds/semver v1.4.2 // indirect
 	github.com/Masterminds/sprig v2.20.0+incompatible
@@ -63,7 +61,7 @@ require (
 	github.com/elazarl/goproxy/ext v0.0.0-20190630181448-f1e96bc0f4c5 // indirect
 	github.com/emicklei/go-restful v2.9.6+incompatible // indirect
 	github.com/envoyproxy/go-control-plane v0.9.7-0.20200730005029-803dd64f0468
-	github.com/evanphx/json-patch v4.5.0+incompatible
+	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/fatih/color v1.7.0
 	github.com/fluent/fluent-logger-golang v1.3.0
 	github.com/frankban/quicktest v1.4.1 // indirect
@@ -75,13 +73,13 @@ require (
 	github.com/go-redis/redis v6.10.2+incompatible
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
-	github.com/golang/protobuf v1.4.2
+	github.com/golang/protobuf v1.4.3
 	github.com/golang/sync v0.0.0-20180314180146-1d60e4601c6f
 	github.com/gomodule/redigo v1.8.0 // indirect
 	github.com/google/cel-go v0.4.1
-	github.com/google/go-cmp v0.5.0
+	github.com/google/go-cmp v0.5.2
 	github.com/google/gofuzz v1.1.0
-	github.com/google/uuid v1.1.1
+	github.com/google/uuid v1.1.2
 	github.com/googleapis/gax-go v2.0.2+incompatible
 	github.com/googleapis/gax-go/v2 v2.0.5
 	github.com/gorilla/mux v1.7.3
@@ -98,8 +96,7 @@ require (
 	github.com/hashicorp/serf v0.8.5 // indirect
 	github.com/hashicorp/vault/api v1.0.3
 	github.com/howeyc/fsnotify v0.9.0
-	github.com/json-iterator/go v1.1.9 // indirect
-	github.com/kr/pretty v0.1.0
+	github.com/kr/pretty v0.2.0
 	github.com/kylelemons/godebug v1.1.0
 	github.com/lestrrat-go/jwx v0.9.0
 	github.com/mattn/go-isatty v0.0.12
@@ -121,17 +118,17 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/pquerna/cachecontrol v0.0.0-20180306154005-525d0eb5f91d // indirect
-	github.com/prometheus/client_golang v1.2.1
+	github.com/prometheus/client_golang v1.7.1
 	github.com/prometheus/client_model v0.2.0
-	github.com/prometheus/common v0.7.0
+	github.com/prometheus/common v0.10.0
 	github.com/prometheus/prom2json v1.2.2
 	github.com/ryanuber/go-glob v1.0.0
 	github.com/satori/go.uuid v1.2.0
-	github.com/spf13/cobra v1.0.0
+	github.com/spf13/cobra v1.1.1
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5
-	github.com/spf13/viper v1.4.0
-	github.com/stretchr/testify v1.5.1
+	github.com/spf13/viper v1.7.0
+	github.com/stretchr/testify v1.6.1
 	github.com/tinylib/msgp v1.0.2 // indirect
 	github.com/tv42/httpunix v0.0.0-20191220191345-2ba4b9c3382c // indirect
 	github.com/uber/jaeger-client-go v0.0.0-20190228190846-ecf2d03a9e80
@@ -142,17 +139,17 @@ require (
 	github.com/yashtewari/glob-intersection v0.0.0-20180206001645-7af743e8ec84 // indirect
 	github.com/yl2chen/cidranger v0.0.0-20180214081945-928b519e5268
 	github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb // indirect
-	go.opencensus.io v0.22.2
+	go.opencensus.io v0.22.3
 	go.uber.org/atomic v1.4.0
 	go.uber.org/multierr v1.1.0
 	go.uber.org/zap v1.10.0
-	golang.org/x/crypto v0.0.0-20200414173820-0848c9571904
-	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
-	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
+	golang.org/x/crypto v0.0.0-20201002170205-7f63de1d35b0
+	golang.org/x/net v0.0.0-20201110031124-69a78807bb2b
+	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
-	golang.org/x/time v0.0.0-20190921001708-c4c64cad1fd0
-	golang.org/x/tools v0.0.0-20200115044656-831fdb1e1868
-	google.golang.org/api v0.15.0
+	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
+	golang.org/x/tools v0.0.0-20200616133436-c1934b75d054
+	google.golang.org/api v0.20.0
 	google.golang.org/genproto v0.0.0-20200619004808-3e7fca5c55db
 	google.golang.org/grpc v1.29.1
 	google.golang.org/protobuf v1.25.0
@@ -164,13 +161,13 @@ require (
 	istio.io/client-go v0.0.0-20200626204548-8f69a2d0fe26
 	istio.io/gogo-genproto v0.0.0-20201202160550-002d724ddaf1
 	istio.io/pkg v0.0.0-20201202160453-b7f8c8c88ca3
-	k8s.io/api v0.18.3
+	k8s.io/api v0.20.5
 	k8s.io/apiextensions-apiserver v0.18.3
-	k8s.io/apimachinery v0.18.3
-	k8s.io/cli-runtime v0.18.3
-	k8s.io/client-go v0.18.3
-	k8s.io/kubectl v0.18.3
-	k8s.io/utils v0.0.0-20200324210504-a9aa75ae1b89
+	k8s.io/apimachinery v0.20.5
+	k8s.io/cli-runtime v0.20.5
+	k8s.io/client-go v0.20.5
+	k8s.io/kubectl v0.20.5
+	k8s.io/utils v0.0.0-20201110183641-67b214c5f920
 	sigs.k8s.io/controller-runtime v0.6.0
 	sigs.k8s.io/service-apis v0.0.0-20200708220836-10c7cb28ed93
 	sigs.k8s.io/yaml v1.2.0
